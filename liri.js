@@ -1,39 +1,54 @@
-// code to grab data from keys.js
-var keys = require('./keys.js');
-
-// console.log(keys);
-
-// variable to store the twitter keys
-var myKeys = keys.twitterKeys;
-
-// console.log(myKeys);
-
-// variables to store the individual twitter keys
-var consumerKey = myKeys.consumer_key;
-var consumerSecret = myKeys.consumer_secret;
-var accessTokenKey = myKeys.access_token_key;
-var accessTokenSecret = myKeys.access_token_secret;
-
-// console.log(consumerKey);
-// console.log(consumerSecret);
-// console.log(accessTokenKey);
-// console.log(accessTokenSecret);
 
 var userCommand = process.argv[2];
+var userInput = process.argv[3];
 
-console.log(userCommand);
+// console.log(userCommand);
+// console.log(userInput);
+
+function getTweets() {
+	// code to grab data from keys.js
+	var keys = require('./keys.js');
+
+	var Twit = require('./node_modules/twit');
+	// console.log(keys.twitterKeys);
+	var client = new Twit(keys.twitterKeys);
+	// console.log(client);
+
+	client.get('search/tweets',{q: 'JasonSinn1'},function(err, data, response) {
+   	console.log(data);
+   
+});
+
+};
+
+function spotifySong(userInput) {
+
+};
+
+function movieThis(userInput) {
+
+};
+
+function doWhatItSays(userInput) {
+
+};
 
 switch (userCommand){
-	case 'my-tweets': console.log('case1 ' + userCommand);
+	case 'my-tweets': getTweets();
+	// console.log('case1 ' + userCommand); 
 	break;
 
-	case 'spotify-this-song': console.log('case2 ' + userCommand);
+	case 'spotify-this-song': spotifySong();
+	// console.log('case2 ' + userCommand);
 	break;
 
-	case 'movie-this': console.log('case3 ' + userCommand);
+	case 'movie-this': movieThis();
+	// console.log('case3 ' + userCommand);
 	break;
 
-	case 'do-what-it-says': console.log('case4 ' + userCommand);
+	case 'do-what-it-says': doWhatItSays();
+	// console.log('case4 ' + userCommand);
 	break;
 }
-// if (process.argv[2] == 'my-tweets');
+
+
