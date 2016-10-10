@@ -49,7 +49,26 @@ function spotifySong() {
 };
 
 function movieThis() {
+	var request = require('request');
 
+	var queryUrl = 'http://www.omdbapi.com/?t=' + userInput +'&y=&plot=short&r=json';
+
+	console.log(queryUrl);
+
+	request(queryUrl, function(error, response, body){
+		if (!error && response.statusCode == 200 && userInput != undefined) {
+			console.log(JSON.parse(body)['Title']);
+			console.log(JSON.parse(body)['Year']);
+			console.log(JSON.parse(body)['imdbRating']);
+			console.log(JSON.parse(body)['Country']);
+			console.log(JSON.parse(body)['Language']);
+			console.log(JSON.parse(body)['Plot']);
+			console.log(JSON.parse(body)['Actors']);
+		} else {
+			userInput = 'Mr Nobody';
+			movieThis();
+		}
+	});
 };
 
 function doWhatItSays() {
@@ -62,11 +81,11 @@ switch (userCommand){
 	break;
 
 	case 'spotify-this-song': spotifySong();
-	console.log('case2 ' + userCommand);
+	// console.log('case2 ' + userCommand);
 	break;
 
 	case 'movie-this': movieThis();
-	// console.log('case3 ' + userCommand);
+	console.log('case3 ' + userCommand);
 	break;
 
 	case 'do-what-it-says': doWhatItSays();
