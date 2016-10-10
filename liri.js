@@ -57,13 +57,12 @@ function movieThis() {
 
 	request(queryUrl, function(error, response, body){
 		if (!error && response.statusCode == 200 && userInput != undefined) {
-			console.log(JSON.parse(body)['Title']);
-			console.log(JSON.parse(body)['Year']);
-			console.log(JSON.parse(body)['imdbRating']);
-			console.log(JSON.parse(body)['Country']);
-			console.log(JSON.parse(body)['Language']);
-			console.log(JSON.parse(body)['Plot']);
-			console.log(JSON.parse(body)['Actors']);
+			var movieInfo = ['Title', 'Year', 'imdbRating', 'Country', 'Language', 'Plot', 'Actors'];
+
+			for (var i = 0; i < movieInfo.length; i++) {
+				console.log(JSON.parse(body)[movieInfo[i]]);
+			}
+			
 		} else {
 			userInput = 'Mr Nobody';
 			movieThis();
