@@ -40,18 +40,19 @@ function spotifySong() {
 
 	    	console.error(err);
 	  	});
+
   	} else {
+
   		userInput = 'The Sign';
   		spotifySong();
   	}
+};
+
+function movieThis() {
 
 };
 
-function movieThis(userInput) {
-
-};
-
-function doWhatItSays(userInput) {
+function doWhatItSays() {
 
 };
 
