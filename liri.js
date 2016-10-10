@@ -16,12 +16,27 @@ function getTweets() {
 
 	client.get('search/tweets',{q: 'JasonSinn1'},function(err, data, response) {
    	console.log(data);
-   
-});
-
+	});
 };
 
-function spotifySong(userInput) {
+function spotifySong() {
+	var SpotifyWebApi = require('./node_modules/spotify-web-api-node');
+ 
+	var spotifyApi = new SpotifyWebApi();
+	// console.log(userInput);
+	spotifyApi.searchTracks(userInput)
+
+  	.then(function(data) {
+
+    	// console.log('Search by ' + userInput, data.body);
+    	console.log(data.body.tracks.items[1].preview_url);
+
+
+  	}, 
+  	function(err) {
+
+    	console.error(err);
+  });
 
 };
 
@@ -39,7 +54,7 @@ switch (userCommand){
 	break;
 
 	case 'spotify-this-song': spotifySong();
-	// console.log('case2 ' + userCommand);
+	console.log('case2 ' + userCommand);
 	break;
 
 	case 'movie-this': movieThis();
