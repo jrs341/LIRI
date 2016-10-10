@@ -3,14 +3,13 @@ var userCommand = process.argv[2];
 var userInput = process.argv[3];
 
 function getTweets() {
-	// code to grab data from keys.js
+	
 	var keys = require('./keys.js');
 
 	var Twit = require('./node_modules/twit');
-	// console.log(keys.twitterKeys);
+	
 	var client = new Twit(keys.twitterKeys);
-	// console.log(client);
-
+	
 	client.get('search/tweets',{q: 'JasonSinn1'},function(err, data, response) {
    	console.log(data);
 	});
@@ -20,7 +19,7 @@ function spotifySong() {
 	var SpotifyWebApi = require('./node_modules/spotify-web-api-node');
  
 	var spotifyApi = new SpotifyWebApi();
-	// console.log(userInput);
+	
 	if (userInput != undefined) {
 		
 		spotifyApi.searchTracks(userInput)
@@ -34,7 +33,6 @@ function spotifySong() {
 	  	}, 
 
 	  	function(err) {
-
 	    	console.error(err);
 	  	});
 
