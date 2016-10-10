@@ -2,9 +2,6 @@
 var userCommand = process.argv[2];
 var userInput = process.argv[3];
 
-// console.log(userCommand);
-// console.log(userInput);
-
 function getTweets() {
 	// code to grab data from keys.js
 	var keys = require('./keys.js');
@@ -80,8 +77,6 @@ function movieThis() {
 function doWhatItSays() {
 	var fs = require('fs');
 
-	// var userCommand = process.argv[3];
-	// var userInput = process.argv[4];
 	var writeThis = [process.argv[3], process.argv[4]];
 
 	fs.writeFile('random.txt', writeThis, function(error){
@@ -104,21 +99,15 @@ function doWhatItSays() {
 
 			switch (userCommand){
 				case 'my-tweets': getTweets();
-				// console.log('case1 ' + userCommand); 
 				break;
 
 				case 'spotify-this-song': spotifySong();
-				// console.log('case2 ' + userCommand);
 				break;
 
 				case 'movie-this': movieThis();
-				console.log('case3 ' + userCommand);
-				console.log(userCommand);
-				console.log(userInput);
 				break;
 
 				case 'do-what-it-says': doWhatItSays();
-				// console.log('case4 ' + userCommand);
 				break;
 			}
 		}
@@ -126,20 +115,16 @@ function doWhatItSays() {
 };
 
 switch (userCommand){
-	case 'my-tweets': getTweets();
-	// console.log('case1 ' + userCommand); 
+	case 'my-tweets': getTweets(); 
 	break;
 
 	case 'spotify-this-song': spotifySong();
-	// console.log('case2 ' + userCommand);
 	break;
 
 	case 'movie-this': movieThis();
-	// console.log('case3 ' + userCommand);
 	break;
 
 	case 'do-what-it-says': doWhatItSays();
-	// console.log('case4 ' + userCommand);
 	break;
 }
 
