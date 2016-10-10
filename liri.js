@@ -24,20 +24,26 @@ function spotifySong() {
  
 	var spotifyApi = new SpotifyWebApi();
 	// console.log(userInput);
-	spotifyApi.searchTracks(userInput)
+	if (userInput != undefined) {
+		
+		spotifyApi.searchTracks(userInput)
 
-  	.then(function(data) {
+	  	.then(function(data) {
 
-    	// console.log('Search by ' + userInput, data.body);
-    	console.log(data.body.tracks.items[0].artists[0].name);
-    	console.log(data.body.tracks.items[0].album.name);
-    	console.log(data.body.tracks.items[0].name);
-    	console.log(data.body.tracks.items[0].preview_url);
-  	}, 
-  	function(err) {
+	    	console.log(data.body.tracks.items[0].artists[0].name);
+	    	console.log(data.body.tracks.items[0].album.name);
+	    	console.log(data.body.tracks.items[0].name);
+	    	console.log(data.body.tracks.items[0].preview_url);
+	  	}, 
 
-    	console.error(err);
-  });
+	  	function(err) {
+
+	    	console.error(err);
+	  	});
+  	} else {
+  		userInput = 'The Sign';
+  		spotifySong();
+  	}
 
 };
 
