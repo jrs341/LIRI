@@ -97,35 +97,30 @@ function doWhatItSays() {
 			userCommand = array[0];
 			userInput = array [1];
 
-			switch (userCommand){
-				case 'my-tweets': getTweets();
-				break;
+			switchCase();
 
-				case 'spotify-this-song': spotifySong();
-				break;
-
-				case 'movie-this': movieThis();
-				break;
-
-				case 'do-what-it-says': doWhatItSays();
-				break;
-			}
 		}
 	})
 };
 
-switch (userCommand){
-	case 'my-tweets': getTweets(); 
-	break;
+function switchCase() {
+	switch (userCommand){
+		case 'my-tweets': getTweets(); 
+		break;
 
-	case 'spotify-this-song': spotifySong();
-	break;
+		case 'spotify-this-song': spotifySong();
+		break;
 
-	case 'movie-this': movieThis();
-	break;
+		case 'movie-this': movieThis();
+		break;
 
-	case 'do-what-it-says': doWhatItSays();
-	break;
+		case 'do-what-it-says': doWhatItSays();
+		break;
+	}
 }
+
+switchCase();
+
+
 
 
