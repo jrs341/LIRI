@@ -29,9 +29,10 @@ function spotifySong() {
   	.then(function(data) {
 
     	// console.log('Search by ' + userInput, data.body);
-    	console.log(data.body.tracks.items[1].preview_url);
-
-
+    	console.log(data.body.tracks.items[0].artists[0].name);
+    	console.log(data.body.tracks.items[0].album.name);
+    	console.log(data.body.tracks.items[0].name);
+    	console.log(data.body.tracks.items[0].preview_url);
   	}, 
   	function(err) {
 
