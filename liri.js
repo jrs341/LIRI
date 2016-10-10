@@ -78,7 +78,51 @@ function movieThis() {
 };
 
 function doWhatItSays() {
+	var fs = require('fs');
 
+	// var userCommand = process.argv[3];
+	// var userInput = process.argv[4];
+	var writeThis = [process.argv[3], process.argv[4]];
+
+	fs.writeFile('random.txt', writeThis, function(error){
+		if (error) {
+			console.log('error');
+		} else {
+			console.log('created the file');
+		}
+	});
+
+	fs.readFile('random.txt', {encoding: 'utf8'}, function(err, data) {
+		if (err) {
+			return console.log(err);
+		} else {
+
+			var array = data.split(',');
+
+			userCommand = array[0];
+			userInput = array [1];
+
+			switch (userCommand){
+				case 'my-tweets': getTweets();
+				// console.log('case1 ' + userCommand); 
+				break;
+
+				case 'spotify-this-song': spotifySong();
+				// console.log('case2 ' + userCommand);
+				break;
+
+				case 'movie-this': movieThis();
+				console.log('case3 ' + userCommand);
+				console.log(userCommand);
+				console.log(userInput);
+				break;
+
+				case 'do-what-it-says': doWhatItSays();
+				// console.log('case4 ' + userCommand);
+				break;
+			}
+		}
+	})
 };
 
 switch (userCommand){
@@ -91,7 +135,7 @@ switch (userCommand){
 	break;
 
 	case 'movie-this': movieThis();
-	console.log('case3 ' + userCommand);
+	// console.log('case3 ' + userCommand);
 	break;
 
 	case 'do-what-it-says': doWhatItSays();
