@@ -51,18 +51,25 @@ function spotifySong() {
 function movieThis() {
 	var request = require('request');
 
-	var queryUrl = 'http://www.omdbapi.com/?t=' + userInput +'&y=&plot=short&r=json';
+	var imdbUrl = 'http://www.omdbapi.com/?t=' + userInput +'&y=&plot=short&r=json';
+	// var tomatoUrl = 
 
-	console.log(queryUrl);
+	console.log(imdbUrl);
 
-	request(queryUrl, function(error, response, body){
+	request(imdbUrl, function(error, response, body){
 		if (!error && response.statusCode == 200 && userInput != undefined) {
 			var movieInfo = ['Title', 'Year', 'imdbRating', 'Country', 'Language', 'Plot', 'Actors'];
 
 			for (var i = 0; i < movieInfo.length; i++) {
 				console.log(JSON.parse(body)[movieInfo[i]]);
 			}
-			
+
+			// request(tomatoUrl, function(error, response, body){
+			// 	console.log(JSON.parse(body));
+			// });
+
+			console.log('https://www.rottentomatoes.com/search/?search='+ userInput);
+
 		} else {
 			userInput = 'Mr Nobody';
 			movieThis();
